@@ -7,11 +7,88 @@
     tools:context=".SignUpPage">
 
     <TextView
+        android:id="@+id/textViewTitle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FADD2323"
+        android:paddingTop="8dp"
+        android:text="@string/Add_allergens_Title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/textViewTitle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FADD2323"
+        android:paddingBottom="8dp"
+        android:text="@string/Add_Allergens_title2"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@id/textViewTitle1" />
+    <LinearLayout
+        android:id="@+id/SpinnerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle2"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/allergenListSpinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/black_rectangle_stroke"
+            android:entries="@array/allergen_List"
+            android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="8dp"
+            android:background="#FADD2323"
+            android:onClick="onClickAddButton"
+            android:text="@string/add_Button_Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/doneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="20dp"/>
+        android:layout_below="@id/SpinnerLinearLayout"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="32dp"
+        android:background="#FADD2323"
+        android:onClick="onClickDoneButton"
+        android:text="@string/Done_Adding_Button"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/doneButton">
+
+        <RelativeLayout
+            android:id="@+id/scrollViewRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
