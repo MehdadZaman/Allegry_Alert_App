@@ -69,6 +69,7 @@
         <EditText
             android:id="@+id/passwordEnterSignUp"
             android:hint="Password"
+            android:inputType="textWebPassword"
             android:layout_width="240dp"
             android:layout_height="40dp"
             android:layout_below="@+id/userNameEnter"
