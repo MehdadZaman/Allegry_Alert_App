@@ -59,4 +59,9 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
+    public void onClickLogout(View v){
+        Intent intent = new Intent(this, LoginPage.class);
+        startActivity(intent);
+    }
+
 }

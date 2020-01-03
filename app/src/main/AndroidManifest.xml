@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddAllergensPage"></activity>
+        <activity android:name=".AddAllergensPage"/>
         <activity android:name=".VerifyEmailPage" />
         <activity android:name=".HomePage" />
         <activity android:name=".SignUpPage" />
