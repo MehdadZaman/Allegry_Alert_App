@@ -23,7 +23,7 @@
 
     <EditText
         android:id="@+id/userNameEnter"
-        android:hint="Username"
+        android:hint="Email"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"

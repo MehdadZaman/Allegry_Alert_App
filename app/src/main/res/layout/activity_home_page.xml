@@ -120,18 +120,18 @@
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emergencyButton"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:layout_marginRight="32dp"
-        android:background="#FADD2323 "
+        android:background="@color/common_google_signin_btn_text_light_default"
         android:text="Logout"
         android:onClick="onClickLogout"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textStyle="bold" />
 
 </RelativeLayout>
