@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SignUpPage extends AppCompatActivity {
+public class AddAllergen extends AppCompatActivity {
 
     private RelativeLayout scrollViewRelativeLayout;
     private static int textIncrementalID;
@@ -24,7 +24,7 @@ public class SignUpPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_allergens);
+        setContentView(R.layout.activity_add_allergens);
 
         scrollViewRelativeLayout = (RelativeLayout) findViewById(R.id.scrollViewRelativeLayout);
         textIncrementalID = 1;
