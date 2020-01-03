@@ -80,12 +80,12 @@ public class LoginPage extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
+    /*@Override
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-    }
+    }*/
 
     public void updateUI(FirebaseUser currentUser) {
         if (currentUser != null)

@@ -13,7 +13,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class HomePage extends AppCompatActivity {
+
+
     private static final int REQUEST_CALL = 1;
 
     @Override

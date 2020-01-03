@@ -11,8 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AddAllergensPage"/>
         <activity android:name=".VerifyEmailPage" />
-        <activity android:name=".HomePage" />
-        <activity android:name=".SignUpPage" />
+        <activity android:name=".HomePage"/>
+        <activity android:name=".SignUpPage"/>
         <activity android:name=".LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
