@@ -1,17 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpPage">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:gravity="center"
+        android:paddingTop="50dp"
+        android:text="Allergy Alert"
+        android:textSize="45dp"
+        android:background="#FADD2323"
+        android:textColor="@android:color/white"/>
+
+    <LinearLayout
+        android:id="@+id/signUpInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp"/>
+        android:layout_marginTop="270dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/firstNameEnterSignUp"
+            android:hint="First Name"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:outlineSpotShadowColor="#FADD2323"/>
+
+        <EditText
+            android:id="@+id/lastNameEnterSignUp"
+            android:hint="Last Name"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:outlineSpotShadowColor="#FADD2323"/>
+
+        <EditText
+            android:id="@+id/emailEnterSignUp"
+            android:hint="Email"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:outlineSpotShadowColor="#FADD2323"/>
+
+        <EditText
+            android:id="@+id/userNameEnterSignUp"
+            android:hint="Username"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:outlineSpotShadowColor="#FADD2323"/>
+
+        <EditText
+            android:id="@+id/passwordEnterSignUp"
+            android:hint="Password"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/userNameEnter"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/invalidSignUp"
+        android:text="The given given email is invalid or already has an account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_light"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/signUpInfo"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/signUpButtonSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="signUpClick"
+        android:text="Sign Up"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/invalidSignUp"
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>
+</ScrollView>

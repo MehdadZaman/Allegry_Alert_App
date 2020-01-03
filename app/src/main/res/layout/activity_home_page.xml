@@ -8,11 +8,20 @@
     tools:context=".HomePage">
 
     <TextView
+        android:id="@+id/loginSuccessfulText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LOGIN SUCCESSFUL"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign out"
+        android:layout_below="@+id/loginSuccessfulText"
+        android:layout_centerHorizontal="true"
+        android:onClick="signOut"/>
 
 </RelativeLayout>

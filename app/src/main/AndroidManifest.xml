@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".VerifyEmailPage"></activity>
         <activity android:name=".HomePage" />
         <activity android:name=".SignUpPage" />
         <activity android:name=".LoginPage">
