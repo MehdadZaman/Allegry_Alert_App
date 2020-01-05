@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class VerifyEmailPage extends AppCompatActivity {
 
     TextView message;
@@ -75,6 +77,7 @@ public class VerifyEmailPage extends AppCompatActivity {
         }
 
         checkUser(emailStr, passwordStr);
+
         if(vaildUser) {
             sendEmailVerification();
             mAuth.signOut();
@@ -103,9 +106,7 @@ public class VerifyEmailPage extends AppCompatActivity {
                             message.setTextColor(Color.GREEN);
                             message.setVisibility(View.VISIBLE);
                             verifyEmail.setEnabled(false);
-                            mAuth.signOut();
                         } else {
-                            mAuth.getCurrentUser().delete();
                             message.setText("Failed to send verification Email");
                             message.setVisibility(View.VISIBLE);
                         }
