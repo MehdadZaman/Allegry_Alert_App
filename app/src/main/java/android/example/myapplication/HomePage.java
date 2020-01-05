@@ -11,24 +11,41 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomePage extends AppCompatActivity {
 
 
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     private static final int REQUEST_CALL = 1;
+
+    private TextView emailView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        /*Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView textView = findViewById(R.id.textView);
-        Date date = new Date();
-        textView.setText(message +"\n"+date.toString());*/
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        emailView = findViewById(R.id.emailHomePage);
+        try {
+            emailView.setText(mAuth.getCurrentUser().getEmail().toString());
+        }
+        catch(Exception e)
+        {
+            emailView.setText("user not available");
+        }
     }
 
     public void onClickEmergencyCall(View view){
@@ -51,6 +68,7 @@ public class HomePage extends AppCompatActivity {
             Toast.makeText(this, "Please Add a Emergency Contact", Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(requestCode == REQUEST_CALL){
@@ -64,8 +82,8 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void onClickLogout(View v){
+        FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
     }
-
 }

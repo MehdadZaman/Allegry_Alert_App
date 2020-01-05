@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,33 +18,38 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPage extends AppCompatActivity {
 
-    //Firebase authentication
     private FirebaseAuth mAuth;
 
-    EditText userName;
+    String uid;
+
+    EditText email;
     EditText password;
 
     TextView incorrectCredentials;
 
-    String userNameStr;
+    String emailStr;
     String passwordStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-        userName = findViewById(R.id.userNameEnter);
+        email = findViewById(R.id.emailEnter);
         password = findViewById(R.id.passwordEnter);
         incorrectCredentials = findViewById(R.id.incorrectCredentials);
         mAuth = FirebaseAuth.getInstance();
+        resumeSession();
     }
 
     public void logInClick(View v)
     {
-        userNameStr = userName.getText().toString();
+        emailStr = email.getText().toString();
         passwordStr = password.getText().toString();
-
-        loginUser(userNameStr, passwordStr);
+        if(!validateForm())
+        {
+            return;
+        }
+        loginUser(emailStr, passwordStr);
     }
 
     public void loginUser(String email, String password) {
@@ -59,6 +63,8 @@ public class LoginPage extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if(mAuth.getCurrentUser().isEmailVerified()) {
                                 updateUI(user);
+                                uid = user.getUid();
+                                user.getIdToken(true);
                             }
                             else {
                                 incorrectCredentials.setText("Email not verified");
@@ -68,8 +74,6 @@ public class LoginPage extends AppCompatActivity {
 
                             updateUI(null);
                         }
-
-                        // ...
                     }
                 });
     }
@@ -80,12 +84,38 @@ public class LoginPage extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*@Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }*/
+    public void resumeSession() {
+        if(mAuth.getCurrentUser() != null) {
+            //super.onStart();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            updateUI(currentUser);
+        }
+    }
+
+    private boolean validateForm() {
+        boolean valid = true;
+        if (TextUtils.isEmpty(emailStr)) {
+            updateUI(null);
+            valid = false;
+        }
+        if (TextUtils.isEmpty(passwordStr)) {
+            updateUI(null);
+            valid = false;
+        }
+        return valid;
+    }
+
+    public void resetPasswordClick(View v)
+    {
+        Intent intent = new Intent(this, ResetPasswordPage.class);
+        startActivity(intent);
+    }
+
+    public void verifyAccountClick(View v)
+    {
+        Intent intent = new Intent(this, VerifyEmailPage.class);
+        startActivity(intent);
+    }
 
     public void updateUI(FirebaseUser currentUser) {
         if (currentUser != null)

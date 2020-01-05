@@ -17,17 +17,17 @@
         android:gravity="center"
         android:paddingTop="50dp"
         android:text="Allergy Alert"
-        android:textSize="45dp"
+        android:textSize="45sp"
         android:background="#FADD2323"
         android:textColor="@android:color/white"/>
 
     <EditText
-        android:id="@+id/userNameEnter"
+        android:id="@+id/emailEnter"
         android:hint="Email"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="325dp"
+        android:layout_marginTop="275dp"
         android:layout_marginBottom="10dp"
         android:outlineSpotShadowColor="#FADD2323"/>
 
@@ -37,7 +37,7 @@
         android:inputType="textWebPassword"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/userNameEnter"
+        android:layout_below="@+id/emailEnter"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"/>
 
@@ -61,7 +61,7 @@
 
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
@@ -76,7 +76,46 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginButton"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textColor="#0000CD"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signUpHere"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textForgot"
+            android:text="Forgot "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textYourPassword"
+            android:text="your password "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0000CD"
+            android:onClick="resetPasswordClick"/>
+
+        <TextView
+            android:id="@+id/textOr"
+            android:text="or to "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textVerifyYourAccount"
+            android:text="verify your account?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0000CD"
+            android:onClick="verifyAccountClick"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
 
