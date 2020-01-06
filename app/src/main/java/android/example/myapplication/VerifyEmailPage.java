@@ -27,17 +27,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class VerifyEmailPage extends AppCompatActivity {
 
-    TextView message;
-    Button verifyEmail;
-    EditText email;
-    EditText password;
+    private TextView message;
+    private Button verifyEmail;
+    private EditText email;
+    private EditText password;
 
-    String emailStr;
-    String passwordStr;
+    private String emailStr;
+    private String passwordStr;
 
-    FirebaseAuth mAuth;
-
-    boolean vaildUser = false;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,25 +74,30 @@ public class VerifyEmailPage extends AppCompatActivity {
             return;
         }
 
-        checkUser(emailStr, passwordStr);
-
-        if(vaildUser) {
-            sendEmailVerification();
-            mAuth.signOut();
-        }
-        else
-        {
-            message.setText("Invalid email or username");
-            message.setVisibility(View.VISIBLE);
-        }
+        mAuth.signInWithEmailAndPassword(emailStr, passwordStr)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            sendEmailVerification();
+                            mAuth.signOut();
+                        }
+                        else
+                        {
+                            message.setText("Invalid email or password");
+                            message.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
     }
 
-    private void sendEmailVerification() {
+    public void sendEmailVerification() {
         final FirebaseUser user = mAuth.getCurrentUser();
         if(user.isEmailVerified())
         {
             message.setVisibility(View.VISIBLE);
             message.setText("Account has already been verified");
+            verifyEmail.setEnabled(false);
             return;
         }
         user.sendEmailVerification()
@@ -110,19 +113,6 @@ public class VerifyEmailPage extends AppCompatActivity {
                             message.setText("Failed to send verification Email");
                             message.setVisibility(View.VISIBLE);
                         }
-                    }
-                });
-    }
-
-    public void checkUser(final String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            vaildUser = true;
-                            }
                     }
                 });
     }

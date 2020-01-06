@@ -35,16 +35,16 @@ public class SignUpPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    EditText name;
-    EditText email;
-    EditText password;
+    private EditText name;
+    private EditText email;
+    private EditText password;
 
-    String nameStr;
-    String emailStr;
-    String passwordStr;
+    private String nameStr;
+    private String emailStr;
+    private String passwordStr;
 
-    TextView invalidSignUp;
-    Button signUp;
+    private TextView invalidSignUp;
+    private Button signUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +109,7 @@ public class SignUpPage extends AppCompatActivity {
                 });
     }
 
-    private void sendEmailVerification() {
+    public void sendEmailVerification() {
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
@@ -130,7 +130,7 @@ public class SignUpPage extends AppCompatActivity {
                 });
     }
 
-    private boolean validateForm() {
+    public boolean validateForm() {
         boolean valid = true;
 
         if (TextUtils.isEmpty(nameStr)) {

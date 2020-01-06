@@ -44,7 +44,7 @@
             android:id="@+id/messageVerifyEmail"
             android:text="There is no email associated with this account"
             android:layout_width="300dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_centerHorizontal="true"
             android:textColor="@android:color/holo_red_light"
             android:layout_margin="10dp"

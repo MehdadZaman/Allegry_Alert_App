@@ -20,15 +20,13 @@ public class LoginPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    String uid;
+    private EditText email;
+    private EditText password;
 
-    EditText email;
-    EditText password;
+    private TextView incorrectCredentials;
 
-    TextView incorrectCredentials;
-
-    String emailStr;
-    String passwordStr;
+    private String emailStr;
+    private String passwordStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +61,6 @@ public class LoginPage extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if(mAuth.getCurrentUser().isEmailVerified()) {
                                 updateUI(user);
-                                uid = user.getUid();
                                 user.getIdToken(true);
                             }
                             else {
@@ -92,7 +89,7 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
-    private boolean validateForm() {
+    public boolean validateForm() {
         boolean valid = true;
         if (TextUtils.isEmpty(emailStr)) {
             updateUI(null);

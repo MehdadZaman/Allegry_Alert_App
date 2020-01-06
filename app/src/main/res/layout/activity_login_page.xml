@@ -50,7 +50,8 @@
         android:textColor="@android:color/holo_red_light"
         android:layout_margin="10dp"
         android:layout_below="@+id/passwordEnter"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/loginButton"
