@@ -12,17 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ResetPasswordPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory = "true"/>
         <activity android:name=".AddAllergensPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory = "true"/>
         <activity android:name=".VerifyEmailPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory = "true"/>
         <activity android:name=".HomePage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory = "true"/>
         <activity android:name=".SignUpPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory = "true"/>
         <activity android:name=".LoginPage"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:noHistory = "true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
