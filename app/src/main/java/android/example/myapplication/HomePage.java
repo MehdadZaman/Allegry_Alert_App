@@ -52,6 +52,14 @@ public class HomePage extends AppCompatActivity {
         makeCall();
     }
 
+    public void addAllergiesClick(View view)
+    {
+        Intent intent = new Intent(this, AddAllergensPage.class);
+        startActivity(intent);
+    }
+
+
+
     public void makeCall(){
         String number = "+8801982991409";
         if(number.trim().length() >0){
@@ -86,4 +94,6 @@ public class HomePage extends AppCompatActivity {
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
     }
+
+
 }
