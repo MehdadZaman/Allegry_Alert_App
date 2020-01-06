@@ -29,10 +29,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.security.spec.ECField;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpPage extends AppCompatActivity {
+
+    //FireStore
+    FirebaseFirestore db;
 
     private FirebaseAuth mAuth;
 
@@ -61,6 +65,9 @@ public class SignUpPage extends AppCompatActivity {
         signUp = findViewById(R.id.signUpButtonSignUp);
 
         mAuth = FirebaseAuth.getInstance();
+
+        //FireStore
+        db = FirebaseFirestore.getInstance();
     }
 
     public void signUpClick(View v)
@@ -125,6 +132,8 @@ public class SignUpPage extends AppCompatActivity {
                             invalidSignUp.setTextColor(Color.GREEN);
                             invalidSignUp.setVisibility(View.VISIBLE);
                             signUp.setEnabled(false);
+                            //FireStore
+                            addUserToDataBase();
                             mAuth.signOut();
                         } else {
                             mAuth.getCurrentUser().delete();
@@ -150,4 +159,15 @@ public class SignUpPage extends AppCompatActivity {
         }
         return valid;
     }
+
+    //FireStore
+    public void addUserToDataBase()
+    {
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("Name", nameStr);
+        userData.put("Email", emailStr);
+        userData.put("Food Allergies", Arrays.asList("Food Allergies"));
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).set(userData);
+    }
+
 }
