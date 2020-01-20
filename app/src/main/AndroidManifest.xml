@@ -3,6 +3,9 @@
     package="android.example.myapplication">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -11,24 +14,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ResetPasswordPage"
-            android:screenOrientation="portrait"
-            android:noHistory = "true"/>
-        <activity android:name=".AddAllergensPage"
-            android:screenOrientation="portrait"
-            android:noHistory = "true"/>
-        <activity android:name=".VerifyEmailPage"
-            android:screenOrientation="portrait"
-            android:noHistory = "true"/>
-        <activity android:name=".HomePage"
-            android:screenOrientation="portrait"
-            android:noHistory = "true"/>
-        <activity android:name=".SignUpPage"
-            android:screenOrientation="portrait"
-            android:noHistory = "true"/>
-        <activity android:name=".LoginPage"
-            android:screenOrientation="portrait"
-            android:noHistory = "true">
+        <activity android:name=".QRIngredientScanner"></activity>
+        <activity
+            android:name=".ResetPasswordPage"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddAllergensPage"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VerifyEmailPage"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomePage"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignUpPage"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginPage"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

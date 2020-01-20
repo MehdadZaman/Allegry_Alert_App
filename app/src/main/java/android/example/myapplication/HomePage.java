@@ -58,7 +58,11 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void gotoQRScanner(View view)
+    {
+        Intent intent = new Intent(this, QRIngredientScanner.class);
+        startActivity(intent);
+    }
 
     public void makeCall(){
         String number = "+8801982991409";

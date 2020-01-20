@@ -59,7 +59,8 @@
         android:background="#FADD2323 "
         android:text="@string/scanButtonText"
         android:textColor="@android:color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="gotoQRScanner"/>
 
     <Button
         android:id="@+id/AddAllergensButton"
