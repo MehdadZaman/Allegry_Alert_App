@@ -15,10 +15,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Source;
+
+import java.util.Map;
 
 public class LoginPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     private EditText email;
     private EditText password;
@@ -36,6 +43,7 @@ public class LoginPage extends AppCompatActivity {
         password = findViewById(R.id.passwordEnter);
         incorrectCredentials = findViewById(R.id.incorrectCredentials);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         resumeSession();
     }
 
@@ -64,6 +72,7 @@ public class LoginPage extends AppCompatActivity {
                                 user.getIdToken(true);
                             }
                             else {
+                                mAuth.signOut();
                                 incorrectCredentials.setText("Email not verified");
                                 updateUI(null);
                             }
@@ -83,9 +92,8 @@ public class LoginPage extends AppCompatActivity {
 
     public void resumeSession() {
         if(mAuth.getCurrentUser() != null) {
-            //super.onStart();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-            updateUI(currentUser);
+            Intent intent = new Intent(LoginPage.this, HomePage.class);
+            startActivity(intent);
         }
     }
 
@@ -117,8 +125,32 @@ public class LoginPage extends AppCompatActivity {
     public void updateUI(FirebaseUser currentUser) {
         if (currentUser != null)
         {
-            Intent intent = new Intent(this, HomePage.class);
-            startActivity(intent);
+            final DocumentReference docRef = db.collection("users").document(currentUser.getUid());
+            // Source can be CACHE, SERVER, or DEFAULT.
+            Source source = Source.SERVER;
+            // Get the document, forcing the SDK to use the offline cache
+            docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        Map<String, Object> dataMap = document.getData();
+                        boolean firstLogin = (boolean)dataMap.get("First Login");
+                        if(firstLogin)
+                        {
+                            DocumentReference df = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            df.update("First Login", false);
+                            Intent intent = new Intent(LoginPage.this, AddAllergensPage.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Intent intent = new Intent(LoginPage.this, HomePage.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
+            });
         }
         else
         {

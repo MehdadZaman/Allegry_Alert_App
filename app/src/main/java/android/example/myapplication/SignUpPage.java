@@ -167,6 +167,8 @@ public class SignUpPage extends AppCompatActivity {
         userData.put("Name", nameStr);
         userData.put("Email", emailStr);
         userData.put("Food Allergies", Arrays.asList("Food Allergies"));
+        userData.put("First Login", true);
+
         db.collection("users").document(mAuth.getCurrentUser().getUid()).set(userData);
     }
 
