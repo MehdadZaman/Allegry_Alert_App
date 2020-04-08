@@ -23,7 +23,7 @@ public class LoginPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     EditText userName;
-    EditText password;
+    EditText password; 
 
     TextView incorrectCredentials;
 
